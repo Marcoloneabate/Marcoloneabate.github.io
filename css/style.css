@@ -70,3 +70,26 @@
         width: 70%;
         padding: 5px;
     }
+    
+    .bottone2 {
+        border: 1px solid green;
+        background-color: #03ec2a;
+        color: white;
+    }
+    
+    .bottone-large {
+        width: 300px;
+        font-size: 20;
+        color: red;
+        transition: background-color 4s ease-in-out;
+    }
+    
+    .bottone-large:hover {
+        background-color: blue;
+        color: black;
+        width: 350px;
+    }
+    
+    .formitem:hover {
+        background-color: #ec0303;
+    }
