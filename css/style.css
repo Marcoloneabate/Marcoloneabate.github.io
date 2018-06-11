@@ -9,3 +9,25 @@ body {
 #mainMenu {
     margin-bottom: 40px;
 }
+
+.row {
+    margin: 0%;
+}
+
+.pippo {
+    color: red;
+    font-size: 30px;
+}
+
+.box {
+    border: 1px solid gray;
+    padding: 20px;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.orange {
+    background-color: orange;
+}
