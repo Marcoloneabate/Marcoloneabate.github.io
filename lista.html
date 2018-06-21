@@ -49,7 +49,7 @@
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button">Search</button>
+                                    <button id="searchbtn" class="btn btn-outline-secondary" type="button">Search </button>
                                 </div>
                             </div>
                         </div>
@@ -58,13 +58,20 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-striped">
+                <div id="emptyContent">
+                    <img src="http://lorempizza.com/600/400" alt="">
+                </div>
+                <div id="loadingBar" class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary|secondary|success|danger|warning|info|light|dark" role="progressbar" style="width: 100%;">Loading</div>
+                </div>
+
+                <table id="usersTable" class="table table-striped">
                     <thead>
                         <tr>
                             <th>id</th>
                             <th>name</th>
                             <th>email</th>
-                            <th>address</th>
+                            <th>username</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,28 +81,18 @@
                             <td>umbertinoscaramozzino@libero.it</td>
                             <td>via Ciccio 19</td>
                         </tr>
-                        <tr>
-                            <td scope="row">2</td>
-                            <td>Marco Abate</td>
-                            <td>marcolone98@gmail.com</td>
-                            <td>via felice grossi gondi 46</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">3</td>
-                            <td>Giacomo Carratu</td>
-                            <td>carra99@gmail.com</td>
-                            <td>via felice grossi gondi 11</td>
-                        </tr>
+
 
                     </tbody>
                 </table>
             </div>
+
             <div class="card-footer text-muted">
             </div>
         </div>
     </div>
     </div>
-    <script src="./jquery-3.3.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js " integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 " crossorigin="anonymous "></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js " integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T " crossorigin="anonymous "></script>
     <script src="./js/main.js"></script>
