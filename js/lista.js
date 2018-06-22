@@ -5,7 +5,7 @@ console.log("Pagina lista");
 
 var SERVICE_URL = "https://jsonplaceholder.typicode.com";
 var API_KEY = "AIzaSyBZHTLXxztyPsT7KR8tD7g1inySI5cU7qQ";
-var YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/search?part=snippet&key=" + API_KEY + "&q=";
+var YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/search";
 
 jQuery(document).ready(function($) {
         console.log("READY")
@@ -20,8 +20,12 @@ jQuery(document).ready(function($) {
             console.log("Click", event);
             // getUsers();
             var search = $("#searchInput").val();
-            getVideos(search);
+            var limit = $("#numberInput").val();
+            getVideos(search, limit);
+
         })
+
+
 
 
 
@@ -29,7 +33,8 @@ jQuery(document).ready(function($) {
                 console.log("tasto premuto", event.key, event.keyCode)
                 if (event.keyCode === 13) {
                     var search = $(this).val();
-                    getVideos(search);
+                    var limit = $("#numberInput").val();
+                    getVideos(search, limit);
                 }
 
             })
@@ -43,12 +48,6 @@ jQuery(document).ready(function($) {
                 $(this).parents("#searchRow").removeClass("full")
                     // $(this).removeClass("inputFocus");
             })
-
-
-
-
-
-
 
         function getUsers() {
             $("#loadingBar").fadeIn(1000);
@@ -69,16 +68,38 @@ jQuery(document).ready(function($) {
             $.each(arrayData, function(index, video) {
                 console.log(index, video)
                     //Creo una nuova riga
-                var newRow = jQuery("<tr/>");
+                var newRow = jQuery("<tr/>").addClass("videoRow")
+                    .data("videoData", video)
+                    .data("videoId", video.id.videoId);
 
-                newRow.append("<td>" + video.id.videoId + "<td/>")
-                newRow.append("<td>" + video.snippet.title + "<td/>")
+                newRow.append("<td class='videoId'>" + video.id.videoId + "<td/>");
+                newRow.append("<td>" + video.snippet.title + "<td/>");
                 newRow.append("<td><img src='" + video.snippet.thumbnails.default.url + "'/><td/>")
 
                 //Appendo la riga alla tabella
                 $tableBody.append(newRow);
 
             })
+
+
+            $(".videoRow").click(function(event) {
+                var $clickedRow = $(this);
+
+                var isSelected = $clickedRow.hasClass("activeVideoRow")
+                $(".videoRow").removeClass("activeVideoRow");
+
+                if (!isSelected)
+                    $clickedRow.addClass("activeVideoRow");
+
+                var videoId = $clickedRow.data("videoId");
+                var video = $clickedRow.data("videoData");
+
+                console.log(videoId, video, $clickedRow)
+
+                openModal(video);
+            });
+
+
 
             setTimeout(function() {
                 $("#loadingBar").fadeOut(2000)
@@ -89,19 +110,27 @@ jQuery(document).ready(function($) {
 
 
 
-
-
-
-
-        function getVideos(search) {
+        function getVideos(search, limit) {
 
             $("#loadingBar").fadeIn(1000);
             $("#emptyContent").fadeOut(1000);
-            $.getJSON(YOUTUBE_URL + search, function(response) {
-                var videos = response.items;
-                console.log("VIDEOS", videos);
-                fillTable(videos);
-            })
+            $.getJSON(
+                YOUTUBE_URL, {
+                    "part": "snippet",
+                    "key": API_KEY,
+                    "maxResults": limit || 10,
+                    "q": search
+                },
+                function(response) {
+                    var videos = response.items;
+                    var found = videos.length;
+                    var total = response.pageInfo.totalResults;
+                    $("#found").text(found);
+                    $("#total").text(total);
+
+                    console.log("VIDEOS", videos);
+                    fillTable(videos);
+                })
         }
 
 
@@ -109,6 +138,14 @@ jQuery(document).ready(function($) {
 
 
 
+        function openModal(video) {
+
+            var videoUrl = "https://www.youtube.com/embed/+video.id.videoId";
+            $("#videoModal").find("iframe").attr("src", videoUrl)
+            $("#videoModalTitle").text(video.snippet.title)
+            $("#videoDescription").text(video.snippet.description)
+            $("#videoModal").modal("show");
+        }
 
 
 

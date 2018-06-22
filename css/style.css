@@ -55,9 +55,15 @@ body {
 }
 
 #usersTable tr img {
+    opacity: .5;
     transition: all .3s ease-in-out
 }
 
 #usersTable tr:hover img {
+    opacity: 1;
     height: 200px;
+}
+
+.activeVideoRow {
+    background-color: rgb(15, 201, 15) !important;
 }
