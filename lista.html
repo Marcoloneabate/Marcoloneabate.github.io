@@ -47,7 +47,7 @@
 
                         <div class="col-md 9">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <input id="searchInput" type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button id="searchbtn" class="btn btn-outline-secondary" type="button">Search </button>
                                 </div>
@@ -68,10 +68,9 @@
                 <table id="usersTable" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>id</th>
-                            <th>name</th>
-                            <th>email</th>
-                            <th>username</th>
+                            <th scope="col">id</th>
+                            <th scope="col">title</th>
+                            <th scope="col">image</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -98,6 +97,10 @@
     <script src="./js/main.js"></script>
 
     <script src="./js/lista.js"></script>
+
+
+
+
 
     <!--
     <div class="card" style="width: 18rem;">

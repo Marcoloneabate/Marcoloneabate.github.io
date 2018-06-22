@@ -31,3 +31,9 @@ body {
 .orange {
     background-color: orange;
 }
+
+.inputFocus {
+    color: #23a527 !important;
+    font-weight: bold;
+    border: 5px solid;
+}
