@@ -32,8 +32,32 @@ body {
     background-color: orange;
 }
 
-.inputFocus {
-    color: #23a527 !important;
-    font-weight: bold;
-    border: 5px solid;
+#searchRow {
+    width: 50%;
+    transition: width .3s ease-in-out;
+}
+
+#searchRow.full {
+    width: 100%;
+}
+
+#usersTable {
+    display: none;
+}
+
+#usersTable tr {
+    transition: all .3s ease-in-out
+}
+
+#usersTable tr:hover {
+    cursor: pointer;
+    background-color: rgb(202, 134, 46);
+}
+
+#usersTable tr img {
+    transition: all .3s ease-in-out
+}
+
+#usersTable tr:hover img {
+    height: 200px;
 }

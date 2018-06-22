@@ -34,11 +34,14 @@ jQuery(document).ready(function($) {
 
             })
             .focus(function(event) {
-                $(this).addClass("inputFocus")
+                // $(this).addClass("inputFocus")
+
                 console.log("Focus")
+                $(this).parents("#searchRow").addClass("full")
             })
             .blur(function() {
-                $(this).removeClass("inputFocus");
+                $(this).parents("#searchRow").removeClass("full")
+                    // $(this).removeClass("inputFocus");
             })
 
 
